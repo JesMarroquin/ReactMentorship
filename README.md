@@ -1,6 +1,24 @@
 # ReactMentorship
 Empty Repository for React Mentees deliverables 
 
+Github Instructions:
+
+1- Fork main branch to your repository
+
+2- Clone code locally or work using codespaces
+
+3- Work on the changes, and make each commit being the activity you are working on.
+
+Follow this format for your commits
+
+COMMIT MESSAGE: 
+
+ACT# - BRANCH_NAME - SMALL COMMENT WITH CHANGES
+
+ACT1 - jesus_e - Initial Commit
+
+4 - Once commited your changes you can go to your repository click on pull requests -> new pull request -> Select the origin the base repository JesMarroquin/ReactMentorship and base: YOUR BRANCH Ej. base: test/jesus_e
+
 PULL REQUESTS:
 
 ACT 1:

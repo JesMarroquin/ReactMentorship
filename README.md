@@ -19,7 +19,9 @@ ACT1 - jesus_e - Initial Commit
 
 4 - Once commited your changes you can go to your repository click on pull requests -> new pull request -> Select the origin the base repository JesMarroquin/ReactMentorship and base: YOUR BRANCH Ej. base: test/jesus_e
 
-PULL REQUESTS:
+PROJECT:
+
+Vite requires Node.js version 14.18+, 16+
 
 ACT 1:
 Initiate react project with Vite

@@ -22,7 +22,7 @@ ACT1 - jesus_e - Initial Commit
 PULL REQUESTS:
 
 ACT 1:
-Initiate project with npm create vite@latest
+Initiate react project with Vite
 
 ACT 2:
 Install MUI Library and icons

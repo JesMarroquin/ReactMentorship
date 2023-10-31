@@ -1,34 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Avatar from '@mui/material/Avatar';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const userProfile = { name: 'Gustavo Garcia', email: 'gustavo@example.com', phone: 81123456789, address: '21 Main Street, Monterrey Nuevo Leon, CP65343' };
+
+  const containerStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Container maxWidth="sm" style={containerStyle}>
+      <Avatar sx={{ width: 100, height: 100 }}>GG</Avatar>
+
+      <Typography variant="h3">{userProfile.name}</Typography>
+      <Card sx={{ minWidth: 275 }}>
+        <CardContent>
+          <Typography variant="h5">Information</Typography>
+          <Typography variant="h6" component="div">Email: {userProfile.email}</Typography>
+          <Typography variant="h6" component="div">Phone: {userProfile.phone}</Typography>
+          <Typography variant="h6" component="div">Address: {userProfile.address}</Typography>
+        </CardContent>
+      </Card>
+    </Container>
   )
 }
 

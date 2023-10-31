@@ -11,11 +11,16 @@ function User({ name, email, phone, address }) {
         alignItems: "center"
     };
 
+    const getInitials = (text) => {
+        const [firstName, lastName] = text.split(' ');
+        return firstName.charAt(0) + lastName.charAt(0);
+    }
+
     const displayInfo = true;
 
     return (
         <Container maxWidth="sm" style={containerStyle}>
-            <Avatar sx={{ width: 100, height: 100 }}>GG</Avatar>
+            <Avatar sx={{ width: 100, height: 100 }}>{getInitials(name)}</Avatar>
 
             {displayInfo && <>
                 <Typography variant="h3">{name}</Typography>

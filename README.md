@@ -25,7 +25,7 @@ Vite requires Node.js version 14.18+, 16+
 
 ________________________________________________________________________________
 
-Session 1
+Week 1
 
 ACT 1:
 Initiate react project with Vite
@@ -57,7 +57,7 @@ Utilizing JSX apply conditional rendering from a variable/const
 
 ________________________________________________________________________________
 
-Session 2
+Week 2
 
 ACT 6:
 Convert the User object you had into an array, pass this object into the UserList Component as props (users).

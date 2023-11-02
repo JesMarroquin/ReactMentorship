@@ -23,6 +23,10 @@ PROJECT:
 
 Vite requires Node.js version 14.18+, 16+
 
+________________________________________________________________________________
+
+Session 1
+
 ACT 1:
 Initiate react project with Vite
 
@@ -51,3 +55,15 @@ Refactor your code in App.tsx to a separate component named User.tsx (applying c
 ACT 5: 
 Utilizing JSX apply conditional rendering from a variable/const
 
+________________________________________________________________________________
+
+Session 2
+
+ACT 6:
+Convert the User object you had into an array, pass this object into the UserList Component as props (users).
+
+ACT 7:
+Using the props sended from the parent component into the UserList component iterate over the users using map and show them in the Table.
+
+ACT 8: 
+Using the useState hook set the users array into the state

@@ -60,7 +60,7 @@ ________________________________________________________________________________
 Week 2
 
 ACT 6:
-Convert the User object you had into an array, pass this object into the UserList Component as props (users).
+Convert the User object you had into an array, pass this object into the UserList Component as props (in case you don't have that component create it).
 
 ACT 7:
 Using the props sended from the parent component into the UserList component iterate over the users using map and show them in the Table.

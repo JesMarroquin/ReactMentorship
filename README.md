@@ -66,4 +66,4 @@ ACT 7:
 Using the props sended from the parent component into the UserList component iterate over the users using map and show them in the Table.
 
 ACT 8: 
-Using the useState hook set the users array into the state
+Using the useEffect and useState hook set the users array into the state

@@ -24,6 +24,8 @@ export const User = () => {
 
   const initials = getInitials(userProfile.name);
 
+  const active: boolean = true;
+
   return (
     <div
       style={{
@@ -49,14 +51,16 @@ export const User = () => {
       >
         {userProfile.name}
       </Typography>
-      <Paper style={{ padding: "20px" }}>
-        <Typography variant="h6" gutterBottom>
-          Information
-        </Typography>
-        <Typography>Email: {userProfile.email}</Typography>
-        <Typography>Phone: {userProfile.phone}</Typography>
-        <Typography>Address: {userProfile.address}</Typography>
-      </Paper>
+      {active ? (
+        <Paper style={{ padding: "20px" }}>
+          <Typography variant="h6" gutterBottom>
+            Information
+          </Typography>
+          <Typography>Email: {userProfile.email}</Typography>
+          <Typography>Phone: {userProfile.phone}</Typography>
+          <Typography>Address: {userProfile.address}</Typography>
+        </Paper>
+      ) : ''}
     </div>
   );
 };

@@ -67,3 +67,6 @@ Using the props sended from the parent component into the UserList component ite
 
 ACT 8: 
 Using the useEffect and useState hook set the users array into the state
+
+ACT 9:
+Using useContext send the users list and setter to the UserList Component so that we no longer need props.

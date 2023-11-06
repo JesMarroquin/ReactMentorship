@@ -25,15 +25,17 @@ function UsersList({userList}: any) {
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow>
-            <TableCell>Jane</TableCell>
-            <TableCell>Surgeon</TableCell>
-            <TableCell align="center">33</TableCell>
-            <TableCell>
-              <IconButton aria-label="edit"><EditIcon /></IconButton>
-              <IconButton aria-label="delete"><DeleteIcon /></IconButton>
-            </TableCell>
-          </TableRow>
+          {userList.map((userItem: any, index: number) => (
+            <TableRow key={userItem.name + index}>
+              <TableCell component="th" scope="row">{userItem.name}</TableCell>
+              <TableCell>{userItem.job}</TableCell>
+              <TableCell align="center">{userItem.age}</TableCell>
+              <TableCell>
+                <IconButton aria-label="edit"><EditIcon /></IconButton>
+                <IconButton aria-label="delete"><DeleteIcon /></IconButton>
+              </TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </TableContainer>

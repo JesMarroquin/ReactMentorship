@@ -1,12 +1,12 @@
-import { Avatar, Paper, Typography } from '@mui/material'
-import UserProfile from '../interfaces/userProfile'
+import { Avatar, Paper, Typography } from '@mui/material';
+import UserProfile from '../interfaces/userProfile';
 
-function User(props: UserProfile) {
+function ProfileCard(props: UserProfile) {
   return (
     <>
       <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
         <Avatar style={{width:130, height:130, marginBottom:25, backgroundColor:'grey'}}>
-          <Typography variant="h2">MC</Typography>
+          <Typography variant="h2">{props.name ? (props.name).substring(0,2) : 'NA'}</Typography>
         </Avatar>
         <Typography variant="h4" style={{color:'black', marginBottom:15}}>{props.name}</Typography>
         <Paper style={{width:'100%', padding:30}}>
@@ -20,4 +20,4 @@ function User(props: UserProfile) {
   )
 }
 
-export default User
+export default ProfileCard

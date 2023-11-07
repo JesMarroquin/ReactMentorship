@@ -9,8 +9,12 @@ import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import User from '../interfaces/user'
+import { useListUsersContext } from '../providers/usersProvider';
 
-function UsersList({userList}: any) {
+function UsersList() {
+  const userList: User[] = useListUsersContext();
+  
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }}>

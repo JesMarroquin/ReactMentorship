@@ -2,7 +2,7 @@ import ProfileCard from './components/ProfileCard';
 import UsersList from './components/UsersList'
 import UserProfile from './interfaces/userProfile';
 import User from './interfaces/user';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
@@ -40,20 +40,26 @@ function App() {
   }];
 
   const [isUserProfileVisible, setUserProfileVisibility] = useState(false);
+  const [listUsers, setListUsers] = useState<User[]>([]);
+  
+  useEffect(()=>{
+    setListUsers(userList);
+  }, []);
+  
   const handleClick = () => {
-    setUserProfileVisibility(true);
+    setUserProfileVisibility(!isUserProfileVisible);
   }
 
   return (
     <>
-      <button onClick={handleClick}>Enable User Profile</button>
+      <button style={{marginBottom: 10}} onClick={handleClick}>Toggle User Profile</button>
       {isUserProfileVisible ? (
         <ProfileCard name={userProfile.name} email={userProfile.email} phone={userProfile.phone} address={userProfile.address}/>
       ) : (
         <h2 style={{color: 'black'}}>Adventure Awaits!</h2>
       )}
       <h1 style={{color: 'black'}}>Users CRUD</h1>
-      <UsersList userList={userList}></UsersList>
+      <UsersList userList={listUsers}></UsersList>
     </>
   )
 }

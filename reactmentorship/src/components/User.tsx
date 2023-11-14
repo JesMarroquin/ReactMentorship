@@ -1,31 +1,37 @@
-import { Box, Paper, Typography } from '@mui/material';
-import '../App.css';
-
-const User = () => {
-    const userProfile = {
+/*const users = [
+    {   
+        avatar : 'JC',
         name: 'Judith Cortés',
         email: 'm.cortes@accenture.com',
-        phone: 5542690991,
+        phone: 5587964545,
         address: 'Calle 5, Porvenir, Azcapotzalco, 02940',
-      };
+        isAvailable: true
+      },
+      {
+        avatar : 'RP',
+        name: 'Raul Pérez',
+        email: 'r.perez@accenture.com',
+        phone: 5582673546,
+        address: 'Río Tiber, Cuauhtémoc, Cuauhtémoc, 06600',
+        isAvailable: false
+      },
+      {
+        avatar : 'AG',
+        name: 'André Gutierrez',
+        email: 'a.gutierrez@accenture.com',
+        phone: 5598099937,
+        address: 'FFCC Nacionales, Reynosa T., Azcapotzalco, 02200',
+        isAvailable: true
+      },
+      {
+        avatar : 'MJ',
+        name: 'Mariela Jimenez',
+        email: 'm.jimenez@accenture.com',
+        phone: 5519375243,
+        address: 'Miguel Shultz, San Rafael, Cuauhtémoc, 06670',
+        isAvailable: false
+      }
 
-  return (
-    <Box display="flex" flexDirection="column" alignItems="center">
-        <Typography variant="h4" component="div" className="profile-info">
-            {userProfile.name}
-        </Typography>
-        <Paper elevation={1} className="info-paper">
-            <Typography variant="h6" fontWeight="bold">
-                Information
-            </Typography>
-            <Typography variant="body1">Email: {userProfile.email}</Typography>
-            <Typography variant="body1">Phone: {userProfile.phone}</Typography>
-            <Typography variant="body1">Address: {userProfile.address}</Typography>
-        </Paper>
-  </Box>
-  );
-};
+]
 
-export default User;
-
-
+export default users;*/

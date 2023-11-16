@@ -4,14 +4,16 @@ import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
-function User({ name, email, phone, address }) {
+import { User } from '../models/User';
+
+function User(props: User) {
     const containerStyle = {
         display: "flex",
         flexDirection: "column",
         alignItems: "center"
     };
 
-    const getInitials = (text) => {
+    const getInitials = (text: string) => {
         const [firstName, lastName] = text.split(' ');
         return firstName.charAt(0) + lastName.charAt(0);
     }
@@ -20,16 +22,16 @@ function User({ name, email, phone, address }) {
 
     return (
         <Container maxWidth="sm" style={containerStyle}>
-            <Avatar sx={{ width: 100, height: 100 }}>{getInitials(name)}</Avatar>
+            <Avatar sx={{ width: 100, height: 100 }}>{getInitials(props.name)}</Avatar>
 
             {displayInfo && <>
-                <Typography variant="h3">{name}</Typography>
+                <Typography variant="h3">{props.name}</Typography>
                 <Card sx={{ minWidth: 275 }}>
                     <CardContent>
                         <Typography variant="h5">Information</Typography>
-                        <Typography variant="h6" component="div">Email: {email}</Typography>
-                        <Typography variant="h6" component="div">Phone: {phone}</Typography>
-                        <Typography variant="h6" component="div">Address: {address}</Typography>
+                        <Typography variant="h6" component="div">Email: {props.email}</Typography>
+                        <Typography variant="h6" component="div">Phone: {props.phone}</Typography>
+                        <Typography variant="h6" component="div">Address: {props.address}</Typography>
                     </CardContent>
                 </Card>
             </>}

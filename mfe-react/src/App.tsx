@@ -1,13 +1,24 @@
-import User from './components/User'
+import { useEffect, useState } from 'react';
+
+import UserList from './components/UserList';
+import { User } from './models/User';
+import { UsersContext } from './contexts';
+
 import './App.css'
 
 function App() {
-  const userProfile = { name: 'Gustavo Garcia', email: 'gustavo@example.com', phone: 81123456789, address: '21 Main Street, Monterrey Nuevo Leon, CP65343' };
+  const [users, setUsers] = useState<Array<User>>([]);
+
+  useEffect(() => {
+    setUsers([
+      { name: 'Gustavo Garcia', email: 'gustavo@example.com', phone: 81123456789, address: '21 Main Street, Monterrey Nuevo Leon, CP65343' }
+    ]);
+  }, []);
 
   return (
-    <>
-      <User {...userProfile} />
-    </>
+    <UsersContext.Provider value={users}>
+      <UserList />
+    </UsersContext.Provider>
   )
 }
 

@@ -7,9 +7,11 @@ type USERS = {
   address: string
 }
 
-export const ProfilesContext = createContext<any>(null)
+export const ProfilesContext = createContext<{ userProfiles: USERS[]; setUserProfiles: React.Dispatch<React.SetStateAction<USERS[]>> } | null>(null);
 
-function useProfilesContext({children}: {children: JSX.Element}): JSX.Element{
+function ProfilesContextProvider({ children }: { children: React.ReactNode }): JSX.Element {
+
+  {
 
     const [userProfiles, setUserProfiles] = useState<USERS[]>(
         [
@@ -40,14 +42,13 @@ function useProfilesContext({children}: {children: JSX.Element}): JSX.Element{
         ]
       );
     
-      const profilesValue =  {userProfiles, setUserProfiles}
-
-    return (
-        <ProfilesContext.Provider value={profilesValue}>
-            {children}
-        </ProfilesContext.Provider>
-    );
+      const profilesValue = { userProfiles, setUserProfiles };
+      return (
+          <ProfilesContext.Provider value={profilesValue}>
+              {children}
+          </ProfilesContext.Provider>
+      );
         
-}
+    }}
 
-export default useProfilesContext;
+export default ProfilesContextProvider;

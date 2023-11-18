@@ -6,11 +6,17 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { UsersContext } from '../contexts';
 
 function UserList() {
     const users = useContext(UsersContext);
+    const navigate = useNavigate();
+
+    const goToUser = (id: string) => {
+        navigate(`/${id}`);
+    }
 
     return (
         <TableContainer component={Paper}>
@@ -26,8 +32,11 @@ function UserList() {
                 <TableBody>
                     {users.map((user) => (
                         <TableRow
-                            key={user.name}
+                            key={user.id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            onClick={() => goToUser(user.id)}
+                            style={{ cursor: 'pointer' }}
+                            title={'See user detail'}
                         >
                             <TableCell component="th" scope="row">
                                 {user.name}

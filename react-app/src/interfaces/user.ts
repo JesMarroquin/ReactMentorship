@@ -4,4 +4,7 @@ export default interface User {
     job: string;
     age: number;
     isAvailable: boolean;
+    email?: string;
+    phone?: number;
+    address?: string;
 }

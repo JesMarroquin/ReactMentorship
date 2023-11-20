@@ -19,7 +19,7 @@ function UsersList() {
   const userList: User[] = useListUsersContext();
 
   const goToDetails = (userIndex: number) => {
-    navigate('/userDetails/' + userIndex);
+    navigate(`/userDetails/${userIndex}`);
   }
   
   return (

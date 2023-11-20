@@ -70,3 +70,15 @@ Using the useEffect and useState hook set the users array into the state
 
 ACT 9:
 Using useContext send the users list and setter to the UserList Component so that we no longer need props.
+
+________________________________________________________________________________
+
+Week 3 (due Nov 17, EOD)
+
+ACT 10: 
+Using React Router create dynamic routes for your users, passing the id as params in the URL, set the UserList component as home.
+
+Create an onClick event so that when we click on a user we move to that user's detailed page.
+
+ACT 11:
+Using Fetch API and this URL: https://randomuser.me/api/?results=10 fill the page with this randomly generated users list, removing the need for the static users information.

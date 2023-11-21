@@ -1,26 +1,24 @@
 import { Avatar, Paper, Typography } from '@mui/material';
 import User from '../interfaces/user'
 import { useListUsersContext } from '../providers/usersProvider';
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useContext, useState, useEffect } from 'react';
 
 function ProfileCard() {
   const currentParams: any = useParams();
-  const userList: User[] = useListUsersContext();
+  const { users } = useContext(useListUsersContext);
   const defaultUserProfile: User = {
     name: 'Mariel Calderon',
     email: 'mcalderon@sample.com',
-    phone: 8113456233,
+    phone: '8113456233',
     address: '21 Main Street, Monterrey Nuevo Leon, CP65343',
     picture: 'https://www.fakepersongenerator.com/Face/female/female20151024414430084.jpg',
-    job: 'Orthopedic Surgeon',
-    age: 33,
-    isAvailable: true
+    age: 33
   };
-
   const [userProfile, setUserProfile] = useState(defaultUserProfile);
+
   useEffect(() => {
-    const currentUser: User = userList[currentParams.userId];
+    const currentUser: User | undefined = users ? users[currentParams.userId] : undefined;
     if (currentUser) {
       setUserProfile(currentUser);
     }
@@ -28,6 +26,9 @@ function ProfileCard() {
 
   return (
     <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+      <nav>
+        <Link to="/">Go Back</Link>
+      </nav>
       <Avatar src={userProfile.picture} style={{width:130, height:130, marginBottom:25, backgroundColor:'grey'}}>
         <Typography variant="h2" style={{textTransform:'uppercase'}}>{userProfile.name ? (userProfile.name).substring(0,2) : 'NA'}</Typography>
       </Avatar>

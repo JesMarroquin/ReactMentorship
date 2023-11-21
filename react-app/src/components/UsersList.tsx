@@ -10,13 +10,13 @@ import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import User from '../interfaces/user'
 import { useListUsersContext } from '../providers/usersProvider';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 
 function UsersList() {
   const navigate: any = useNavigate();
-  const userList: User[] = useListUsersContext();
+  const { users } = useContext(useListUsersContext);
 
   const goToDetails = (userIndex: number) => {
     navigate(`/userDetails/${userIndex}`);
@@ -30,7 +30,7 @@ function UsersList() {
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
-              <TableCell>Job</TableCell>
+              <TableCell>Address</TableCell>
               <TableCell align="center">Age</TableCell>
               <TableCell>
                 <IconButton aria-label="add"><AddIcon /></IconButton>
@@ -38,10 +38,10 @@ function UsersList() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {userList.map((userItem: any, index: number) => (
+            {users?.map((userItem: any, index: number) => (
               <TableRow key={userItem.name + index}>
                 <TableCell component="th" scope="row">{userItem.name}</TableCell>
-                <TableCell>{userItem.job}</TableCell>
+                <TableCell>{userItem.address}</TableCell>
                 <TableCell align="center">{userItem.age}</TableCell>
                 <TableCell>
                   <Button onClick={() => goToDetails(index)} variant="contained">Details</Button>

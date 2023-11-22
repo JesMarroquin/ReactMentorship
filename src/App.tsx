@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 import UserList from "./components/UserList";
 
@@ -8,6 +9,15 @@ function App() {
     phone: number;
     address: string;
   }
+
+  const initialState: UserProps[] = [
+    {
+      name: "",
+      email: "",
+      phone: 0,
+      address: "",
+    },
+  ];
 
   const userProfiles: UserProps[] = [
     {
@@ -29,9 +39,16 @@ function App() {
       address: "21 Main Street, Monterrey Nuevo Leon, CP65343",
     },
   ];
+
+  const [users, setUsers] = useState(initialState);
+
+  useEffect(() => {
+    setUsers(userProfiles);
+  }, []);
+
   return (
     <>
-      <UserList users={userProfiles}/>
+      <UserList users={users} />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useContext } from "react";
 import {
   Table,
   TableBody,
@@ -13,6 +13,8 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from '@mui/icons-material/Edit';
 
+import { UserContext } from "../App";
+
 export interface UserProps {
   name: string;
   email: string;
@@ -20,7 +22,8 @@ export interface UserProps {
   address: string;
 }
 
-export default function UserList({ users }: UserProps[]) {
+export default function UserList() {
+  const users = useContext(UserContext);
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">

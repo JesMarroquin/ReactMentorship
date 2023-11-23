@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import UserList from "./components/UserList";
 
-function App() {
-  interface UserProps {
-    name: string;
-    email: string;
-    phone: number;
-    address: string;
-  }
+export interface UserProps {
+  name: string;
+  email: string;
+  phone: number;
+  address: string;
+}
 
+export const UserContext = createContext<UserProps[]>([]);
+
+function App() {
   const initialState: UserProps[] = [
     {
       name: "",
@@ -47,9 +49,9 @@ function App() {
   }, []);
 
   return (
-    <>
-      <UserList users={users} />
-    </>
+    <UserContext.Provider value={users}>
+      <UserList />
+    </UserContext.Provider>
   );
 }
 

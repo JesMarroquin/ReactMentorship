@@ -1,30 +1,19 @@
 import { Avatar, Paper, Typography } from "@mui/material";
-
-interface UserProps {
-  name: string;
-  email: string;
-  phone: number;
-  address: string;
-}
+import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { UserContext } from "../App";
+import { User as UserModel } from "../models/User";
 
 export const User = () => {
-  const userProfile: UserProps = {
-    name: "Anaí Gonzalez",
-    email: "anai@example.com",
-    phone: 81123456789,
-    address: "21 Main Street, Monterrey Nuevo Leon, CP65343",
-  };
+  const { id } = useParams();
+  const users = useContext(UserContext);
 
-  // Get the initials
-  const getInitials = (name: string) => {
-    const words = name.split(" ");
-    const initials = words.map((word) => word[0].toUpperCase());
-    return initials.join("");
-  };
+  const [user, setUser] = useState<UserModel | null>(null);
 
-  const initials = getInitials(userProfile.name);
-
-  const active: boolean = true;
+  useEffect(() => {
+    const u = users.find((u) => u.id === id);
+    u && setUser(u);
+  }, []);
 
   return (
     <div
@@ -34,33 +23,38 @@ export const User = () => {
         alignItems: "center",
       }}
     >
-      <Avatar
-        style={{
-          width: 100,
-          height: 100,
-          marginBottom: 20,
-          backgroundColor: "gray",
-        }}
-      >
-        <Typography variant="h3">{initials}</Typography>
-      </Avatar>
-      <Typography
-        variant="h4"
-        gutterBottom
-        style={{ color: "black", fontWeight: "bold" }}
-      >
-        {userProfile.name}
-      </Typography>
-      {active ? (
-        <Paper style={{ padding: "20px" }}>
-          <Typography variant="h6" gutterBottom>
-            Information
+      {user ? (
+        <>
+          <Avatar
+            style={{
+              width: 100,
+              height: 100,
+              marginBottom: 20,
+              backgroundColor: "gray",
+            }}
+          >
+            <Typography variant="h3">AG</Typography>
+          </Avatar>
+          <Typography
+            variant="h4"
+            gutterBottom
+            style={{ color: "black", fontWeight: "bold" }}
+          >
+            {user.name}
           </Typography>
-          <Typography>Email: {userProfile.email}</Typography>
-          <Typography>Phone: {userProfile.phone}</Typography>
-          <Typography>Address: {userProfile.address}</Typography>
-        </Paper>
-      ) : ''}
+
+          <Paper style={{ padding: "20px" }}>
+            <Typography variant="h6" gutterBottom>
+              Information
+            </Typography>
+            <Typography>Email: {user.email}</Typography>
+            <Typography>Phone: {user.phone}</Typography>
+            <Typography>Address: {user.address}</Typography>
+          </Paper>
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

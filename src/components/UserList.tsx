@@ -12,6 +12,7 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from '@mui/icons-material/Edit';
+import { useNavigate } from 'react-router-dom';
 
 import { UserContext } from "../App";
 
@@ -24,6 +25,12 @@ export interface UserProps {
 
 export default function UserList() {
   const users = useContext(UserContext);
+  const navigate = useNavigate();
+
+    const goToUser = (id: string) => {
+        navigate(`/${id}`);
+    }
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -43,10 +50,12 @@ export default function UserList() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {users.map((user: UserProps, index: number) => (
+          {users.map((user) => (
             <TableRow
-              key={index}
+              key={user.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              onClick={() => goToUser(user.id)}
+              style={{ cursor: 'pointer' }}
             >
               <TableCell align="left">{user.name}</TableCell>
               <TableCell align="left">{user.phone}</TableCell>

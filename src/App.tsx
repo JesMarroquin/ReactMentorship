@@ -1,56 +1,44 @@
 import { createContext, useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+
 import "./App.css";
 import UserList from "./components/UserList";
+import { User } from "./components/User";
+import { User as UserModel } from "./models/User";
 
-export interface UserProps {
-  name: string;
-  email: string;
-  phone: number;
-  address: string;
-}
-
-export const UserContext = createContext<UserProps[]>([]);
+export const UserContext = createContext<UserModel[]>([]);
 
 function App() {
-  const initialState: UserProps[] = [
-    {
-      name: "",
-      email: "",
-      phone: 0,
-      address: "",
-    },
-  ];
-
-  const userProfiles: UserProps[] = [
-    {
-      name: "Anaí Gonzalez",
-      email: "anai@example.com",
-      phone: 81123456789,
-      address: "21 Main Street, Monterrey Nuevo Leon, CP65343",
-    },
-    {
-      name: "James Doe ",
-      email: "jamesdoe@example.com",
-      phone: 81123456789,
-      address: "21 Main Street, Monterrey Nuevo Leon, CP65343",
-    },
-    {
-      name: "Larry Doe ",
-      email: "larrydoe@example.com",
-      phone: 81123456789,
-      address: "21 Main Street, Monterrey Nuevo Leon, CP65343",
-    },
-  ];
-
-  const [users, setUsers] = useState(initialState);
+  const [users, setUsers] = useState<Array<UserModel>>([]);
 
   useEffect(() => {
-    setUsers(userProfiles);
+    fetch("https://randomuser.me/api/?results=10")
+      .then((response) => {
+        if (!response.ok) {
+          return { results: [] };
+        }
+
+        return response.json();
+      })
+      .then(({ results }) => {
+        setUsers(
+          results.map((r: any, index: number) => ({
+            id: index.toString(),
+            name: `${r.name.first} ${r.name.last}`,
+            email: r.email,
+            phone: r.phone,
+            address: `${r.location.street.name} ${r.location.street.number}, ${r.location.city}, ${r.location.state}, ${r.location.country}`,
+          }))
+        );
+      });
   }, []);
 
   return (
     <UserContext.Provider value={users}>
-      <UserList />
+      <Routes>
+        <Route path="/" element={<UserList />} />
+        <Route path="/:id" element={<User />} />
+      </Routes>
     </UserContext.Provider>
   );
 }

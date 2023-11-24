@@ -1,6 +1,8 @@
 import { Typography } from "@mui/material";
 import "./App.css";
 import User from "./components/User";
+import UserList from "./components/UserList";
+import { users } from "./users";
 
 function App() {
   const userProfile = {
@@ -11,7 +13,8 @@ function App() {
   };
 
   // Conditional Rendering
-  const isVisible = true;
+  const isVisible = false;
+  const isVisibleList = true;
 
   return (
     <>
@@ -22,6 +25,8 @@ function App() {
           phone={userProfile.phone}
           address={userProfile.address}
         />
+      ) : isVisibleList ? (
+        <UserList {...users} />
       ) : (
         <Typography variant="h1">Not found...</Typography>
       )}

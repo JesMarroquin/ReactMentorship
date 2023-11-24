@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { Avatar, Typography, Card, CardContent, Grid } from "@mui/material";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const userProfile = {
+    name: "Niver Martínez",
+    email: "niver@example.com",
+    phone: 81123456789,
+    address: "21 Main Street, Monterrey Nuevo Leon, CP65343",
+  };
+
+  const getCaps = (name: string) => {
+    return name.split(" ")[0][0] + name.split(" ")[1][0];
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Grid
+        container
+        rowGap={2}
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Avatar sx={{ width: 100, height: 100 }}>
+          <Typography sx={{ fontSize: 36 }}>
+            {getCaps(userProfile.name)}
+          </Typography>
+        </Avatar>
+        <Typography variant="h3">{userProfile.name}</Typography>
+        <Card>
+          <CardContent>
+            <Typography sx={{ fontSize: 18 }} gutterBottom>
+              Information
+            </Typography>
+            <Typography variant="body2" sx={{ width: 250 }}>
+              {`Email: ${userProfile.email}`}
+              <br />
+              {`Phone: ${userProfile.phone}`}
+              <br />
+              {`Address: ${userProfile.address}`}
+            </Typography>
+          </CardContent>
+        </Card>
+      </Grid>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

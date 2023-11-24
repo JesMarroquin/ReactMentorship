@@ -38,14 +38,14 @@ export const users: User[] = [
     address: "414 Bowman Trail",
   },
   {
-    name: "Sal Sheahan",
+    name: "Salsai Sheahan",
     email: "ssheahan6@npr.org",
     phone: 6275638672,
     address: "9 Brown Drive",
   },
   {
     name: "Karolina Fellow",
-    email: "kfellow7@nationalgeographic.com",
+    email: "kfellow7@natgeo.com",
     phone: 2061243022,
     address: "582 Cascade Road",
   },
@@ -54,11 +54,5 @@ export const users: User[] = [
     email: "kpeirpoint8@usatoday.com",
     phone: 1591355575,
     address: "3 Lillian Circle",
-  },
-  {
-    name: "Elvira Collet",
-    email: "ecollet9@wikia.com",
-    phone: 2592023059,
-    address: "1 Sutteridge Junction",
   },
 ];

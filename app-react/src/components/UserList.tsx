@@ -9,15 +9,18 @@ import {
   TableRow,
 } from "@mui/material";
 import User from "./User";
+import { useContext } from "react";
+import { UserContext } from "../App";
 
 const isVisible = false;
 
-function UserList(props: { users: User[] }) {
+function UserList() {
+  const users = useContext<User[]>(UserContext);
   return (
     <>
       {isVisible ? (
         <Grid container spacing={2}>
-          {props.users.map((user: User) => {
+          {users.map((user: User) => {
             return (
               <Grid item xs={4}>
                 <User
@@ -42,7 +45,7 @@ function UserList(props: { users: User[] }) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {props.users.map((user: User) => (
+              {users.map((user: User) => (
                 <TableRow
                   key={user.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}

@@ -1,24 +1,24 @@
 import { Typography } from "@mui/material";
 import "./App.css";
-import { users } from "./users";
 import UserList from "./components/UserList";
-import { useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import User from "./components/User";
+import { users } from "./users";
+
+export const UserContext = createContext<User[]>([]);
 
 function App() {
   // useState
-  const [usersList, setUsersList] = useState<User[]>([]);
+  const [usersList] = useState<User[]>(users);
   const isVisible = true;
-
-  useEffect(() => setUsersList(users), []);
   return (
-    <>
+    <UserContext.Provider value={usersList}>
       {isVisible ? (
-        <UserList users={usersList} />
+        <UserList />
       ) : (
         <Typography variant="h1">Not found...</Typography>
       )}
-    </>
+    </UserContext.Provider>
   );
 }
 

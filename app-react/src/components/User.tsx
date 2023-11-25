@@ -4,7 +4,6 @@ import {
   Card,
   CardContent,
   Grid,
-  Button,
   Link,
 } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
@@ -14,7 +13,7 @@ import { useContext } from "react";
 export interface IUser {
   name?: string;
   email?: string;
-  phone?: number;
+  phone?: number | string;
   address?: string;
 }
 

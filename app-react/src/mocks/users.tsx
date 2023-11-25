@@ -1,6 +1,6 @@
-import User from "./components/User";
+import { IUser } from "../components/User";
 
-export const users: User[] = [
+export const users: IUser[] = [
   {
     name: "Thedric Lapree",
     email: "tlapree0@mail.ru",

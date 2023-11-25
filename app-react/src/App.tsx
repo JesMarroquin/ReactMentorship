@@ -1,24 +1,26 @@
-import { Typography } from "@mui/material";
 import "./App.css";
 import UserList from "./components/UserList";
-import { createContext, useState } from "react";
-import User from "./components/User";
-import { users } from "./users";
+import { createContext, useEffect, useState } from "react";
+import User, { IUser } from "./components/User";
+import { users } from "./mocks/users";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-export const UserContext = createContext<User[]>([]);
+export const UserContext = createContext<IUser[] | undefined>([]);
 
 function App() {
-  // useState
-  const [usersList] = useState<User[]>(users);
-  const isVisible = true;
+  const [usersList, setUsersList] = useState<IUser[]>();
+  useEffect(() => setUsersList(users), []);
   return (
-    <UserContext.Provider value={usersList}>
-      {isVisible ? (
-        <UserList />
-      ) : (
-        <Typography variant="h1">Not found...</Typography>
-      )}
-    </UserContext.Provider>
+    <>
+      <BrowserRouter>
+        <UserContext.Provider value={usersList}>
+          <Routes>
+            <Route path="/" element={<UserList />} />
+            <Route path="/user" element={<User />} />
+          </Routes>
+        </UserContext.Provider>
+      </BrowserRouter>
+    </>
   );
 }
 

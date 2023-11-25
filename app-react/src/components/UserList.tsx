@@ -8,19 +8,20 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import User from "./User";
 import { useContext } from "react";
 import { UserContext } from "../App";
-
-const isVisible = false;
+import User, { IUser } from "./User";
+import { useNavigate } from "react-router-dom";
 
 function UserList() {
-  const users = useContext<User[]>(UserContext);
+  const users = useContext<IUser[] | undefined>(UserContext);
+  const navigate = useNavigate();
+  const isVisible = false;
   return (
     <>
       {isVisible ? (
         <Grid container spacing={2}>
-          {users.map((user: User) => {
+          {users?.map((user: IUser) => {
             return (
               <Grid item xs={4}>
                 <User
@@ -38,6 +39,7 @@ function UserList() {
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
+                <TableCell>Id</TableCell>
                 <TableCell>Name</TableCell>
                 <TableCell>Email</TableCell>
                 <TableCell>Phone</TableCell>
@@ -45,11 +47,17 @@ function UserList() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {users.map((user: User) => (
+              {users?.map((user: IUser, index: number) => (
                 <TableRow
+                  hover
                   key={user.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  sx={{
+                    "&:last-child td, &:last-child th": { border: 0 },
+                    cursor: "pointer",
+                  }}
+                  onClick={() => navigate(`/user?id=${index}`)}
                 >
+                  <TableCell>{index}</TableCell>
                   <TableCell component="th" scope="row">
                     {user.name}
                   </TableCell>
